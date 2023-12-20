@@ -1,0 +1,470 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --background-color: #181818;
+    --text-color: #fcfcfc;
+    --accent-color: #ffd016;
+    --dark-accent-color: #d2a531;
+    --header-background: rgba(23, 23, 23, 0.7);
+    --nav-background: #2980b9;
+    --project-background: #ecf0f1;
+    --footer-background: #34495e;
+
+    --neon-color: #cbfc2a;
+    --loader-background: #000;
+    --white-color: #fefefe;
+}
+
+/* Fonts */
+
+@font-face {
+    font-family: 'Media sans';
+    src: url('/assets/fonts/media-sans.ttf');
+    font-weight: 600;
+    font-style: bold;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/assets/fonts/neuemachina-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/assets/fonts/neuemachina-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+html{
+    font-size: 15px;
+    font-family: 'Open sans', Arial, Calibri, Helvetica, sans-serif;
+}
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: currentColor;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.mrg-top-1{
+    margin-top: 1rem;
+}
+.mrg-top-2{
+    margin-top: 2rem;
+}
+.clean-button{
+    display: block;
+    width: auto;
+    margin:0;padding:0;border:0;
+    background: transparent;
+    color:inherit;
+    cursor: pointer;
+}
+
+body {
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.link{
+    font-family: 'Neue Machina';
+    font-weight: 500;
+    letter-spacing: 0.08rem;
+}
+
+.link-hover::after{
+    display: block;
+    content : "";
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    transition: 0.23s all linear;
+    border-bottom: solid 1.6px currentColor;
+}
+
+.link-hover:hover::after, .link-hover:focus::after{
+    width: 100%;
+}
+
+img{
+    display: inline-block;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    height: calc(100% - 6rem);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flex{
+    -webkit-display: flex;
+    display: flex;
+}
+
+/* Loader styles */
+#loader{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2023;
+}
+#loader-content{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.panes{
+    width: 100%;
+    height: 100vh;
+
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+}
+
+.pane{
+    width: 100vw;
+    height: 100vw;
+    
+    position: absolute;
+    will-change: transform;
+    
+    transform: translate3d(0px, 0vw, 0px) skew(0deg, -45deg);
+    transform-style: preserve-3d;
+    background: var(--loader-background);
+}
+
+#loader.loading .pane{
+    transition: 0.5s transform cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    /* transition: 0.5s all ease-in; */
+}
+
+#left-pane{
+    bottom: 49.5%;
+}
+
+#right-pane{
+    top: 50%;
+}
+
+#loader.loaded{
+    display: none;
+}
+#loader.unloading{
+    display: block;
+}
+
+#loader.loading #left-pane, #loader.unloading #left-pane{
+    transform: translate3d(0px, -220vw, 0px) skew(0deg, -45deg);
+}
+#loader.loading #right-pane, #loader.unloading #right-pane{
+    transform: translate3d(0px, 220vw, 0px) skew(0deg, -45deg);
+}
+
+#loader.unloading #right-pane, #loader.unloading #left-pane{
+    transform: translate3d(0px, 0vw, 0px) skew(0deg, -45deg);
+    animation: 1s transform ease-out;
+}
+
+.loading-text{
+    position: absolute;
+    bottom: 6%;
+    right: 6%;
+    width: 30%;
+    max-width: 200px;
+    opacity: 1;
+}
+
+#loader.loading .loading-text{
+    transition: 0.2s all ease-in;
+    transform: translateY(200%);
+    bottom: 0;
+}
+
+.loading-text > img{
+    width: 100%;
+    height: auto;
+}
+
+/* Header styles */
+.container{
+    padding-inline: 5.56rem;
+}
+#header{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 7rem;
+    padding-block: 1.67rem;
+    z-index: 2000;
+    background: var(--header-background);
+    box-sizing: border-box;
+    backdrop-filter: blur(2rem);
+}
+
+#logo{
+    font-family: 'Neue Machina';
+    font-size: 24px;
+    width: auto;
+    height: 48px;
+    padding: 6px 3px;
+    line-height: 1.6;
+    box-sizing: border-box;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+
+#logo img{
+width: auto;
+height: 100%;
+}
+
+.head-wrapper{
+align-items: center;
+}
+
+.head-links{
+margin-left : auto;
+height: auto;
+}
+
+.head-links .link{
+line-height: 2rem;
+padding: 0.6rem 0.8rem;
+}
+
+.head-links .active-link{
+font-weight: 600;
+color: var(--white-color);
+}
+
+.head-links .focused-link{
+color: var(--neon-color);
+font-weight: bold;
+}
+
+.head-links .focused-link::after, .btn.main-btn::after{
+content : "\1F86D";
+display: inline-block;
+margin: 0;
+margin-left: 0.6rem;
+transition: 0.4s all ease-in-out;
+position: relative;
+left:0;
+bottom:0;
+}
+.btn.main-btn::after{
+margin-left: 0;
+width:0;
+opacity: 0;
+}
+
+.btn.main-btn:hover::after, .btn.main-btn:focus::after{
+margin-left: 0.6rem;
+opacity: 1;
+width: 0.6em;
+}
+
+.head-links .focused-link:hover::after, .head-links .focused-link:focus::after{
+left: 0.2rem;
+bottom: 0.2rem;
+}
+
+.sq-btn{
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    margin:0;border:none;outline:none;background: transparent;
+    color: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.sq-btn:hover, .sq-btn:focus{
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sq-btn svg{
+    width:24px;
+    height:24px;
+    fill: currentColor;
+}
+
+.link-spacer{
+margin-left: 1.2rem;
+}
+
+#hamburger-menu{
+display: none;
+width: auto;
+height: 3rem;
+padding: 0.7rem 0.7rem 0.7rem 0;
+margin-right: 1.2rem;
+}
+#hamburger-menu svg{
+width: 100%;
+}
+
+
+.svg{
+display: inline-block;
+position: relative;
+top:5px;
+margin: -0.4rem 0.5rem 0 -0.4rem;
+width: 1.55rem;
+
+}
+.svg>svg{
+width: 100%;
+fill: currentColor;
+}
+
+/* Main content styles */
+
+
+/* Section styles */
+
+
+/* Animations */
+@keyframes unload{
+from{
+
+}
+
+to{
+
+}
+}
+
+#mobile-menu-close-btn{
+    display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+.container{
+    padding-inline: 2rem;
+}
+#header{
+    height: 5.6rem;
+    padding-block: 1.2rem;
+}
+
+.head-links .link{
+    padding: 0.6rem 1rem;
+}
+}
+
+@media (max-width: 768px) {
+    :root{
+        font-size: 14px;
+    }
+    #header h1 {
+        font-size: 1.5em;
+    }
+
+    nav a {
+        font-size: 1em;
+    }
+
+    .project {
+        padding: 10px;
+    }
+
+    .pane{
+        height: 200vw;
+    }
+
+    /* Switch to mobile view  */
+    
+    #hamburger-menu{
+        display: block;
+    }
+
+    .head-links{
+        display: none;
+    }
+
+    #header[aria-expanded="true"] .head-links{
+        display: block;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.5);
+    }
+    #mobile-menu-close-btn{
+        display: block;
+        position: absolute;
+        top: 4rem;
+        left: 0.2rem;
+    }
+
+    .head-links::after{
+        content:"";
+        display: block;
+        position: absolute;
+        top:0; left:0;
+        width: 100%;
+        height: 100%;
+        max-width: 20rem;
+        background: var(--background-color);
+        z-index: -1;
+    }
+    .head-links::before{
+        content: attr(aria-label);
+        display: block;
+        font-family: 'Neue Machina';
+        width: 100%;
+        max-width: 20rem;
+        line-height: 3.4rem;
+        padding: 4rem 1rem 3rem 4rem;
+        box-sizing: border-box;
+        color: #fff;
+        letter-spacing: 2px;
+        font-size: 1.6rem;
+        opacity: 0.7;
+    }
+    
+
+    .head-links .link{
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 20rem;
+        box-sizing: border-box;
+        padding: 0.5rem 1rem 1rem 4rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+@media (max-width : 425px){
+    #hamburger-menu{
+        margin-right: auto;
+    }
+}
