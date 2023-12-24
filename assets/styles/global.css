@@ -1,17 +1,17 @@
 :root {
     --primary-color: #3498db;
     --secondary-color: #2980b9;
-    --background-color: #181818;
+    --background-color: #282828;
     --text-color: #fcfcfc;
     --accent-color: #ffd016;
     --dark-accent-color: #d2a531;
-    --header-background: rgba(23, 23, 23, 0.7);
+    --header-background: rgb(40, 40, 40, 0.5);
     --nav-background: #2980b9;
     --project-background: #ecf0f1;
     --footer-background: #34495e;
 
     --neon-color: #cbfc2a;
-    --loader-background: #000;
+    --loader-background: #666;
     --white-color: #fefefe;
 }
 
@@ -41,7 +41,7 @@
 
 html{
     font-size: 15px;
-    font-family: 'Open sans', Arial, Calibri, Helvetica, sans-serif;
+    font-family: 'Open sans', 'Segoe UI', Roboto, Tahoma, Arial, Calibri, Helvetica, sans-serif;
 }
 
 /* Reset some default styles */
@@ -50,10 +50,11 @@ body, h1, h2, h3, p, ul, li {
     padding: 0;
 }
 
-a{
+a, button{
     color: currentColor;
     text-decoration: none;
     display: inline-block;
+    cursor: pointer;
 }
 
 .mrg-top-1{
@@ -267,6 +268,11 @@ color: var(--neon-color);
 font-weight: bold;
 }
 
+.btn-back{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.4rem;
+}
+
 .head-links .focused-link::after, .btn.main-btn::after{
 content : "\1F86D";
 display: inline-block;
@@ -365,17 +371,17 @@ to{
 
 /* Responsive styles */
 @media (max-width: 1024px) {
-.container{
-    padding-inline: 2rem;
-}
-#header{
-    height: 5.6rem;
-    padding-block: 1.2rem;
-}
+    .container{
+        padding-inline: 2rem;
+    }
+    #header{
+        height: 5.6rem;
+        padding-block: 1.2rem;
+    }
 
-.head-links .link{
-    padding: 0.6rem 1rem;
-}
+    .head-links .link{
+        padding: 0.6rem 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -405,15 +411,16 @@ to{
     }
 
     .head-links{
-        display: none;
+        position: fixed;
+        visibility: hidden;
     }
 
     #header[aria-expanded="true"] .head-links{
         display: block;
         width: 100vw;
-        position: fixed;
         top: 0;
         left: 0;
+        visibility: visible;
         height: 100vh;
         background: rgba(255, 255, 255, 0.5);
     }
@@ -428,12 +435,16 @@ to{
         content:"";
         display: block;
         position: absolute;
-        top:0; left:0;
+        top:0; left:-3rem;
         width: 100%;
         height: 100%;
         max-width: 20rem;
         background: var(--background-color);
         z-index: -1;
+    }
+    #header[aria-expanded="true"] .head-links::after{
+        left: 0;
+        transition: 0.3s all ease-out;
     }
     .head-links::before{
         content: attr(aria-label);
@@ -459,6 +470,10 @@ to{
         box-sizing: border-box;
         padding: 0.5rem 1rem 1rem 4rem;
         font-size: 1.2rem;
+    }
+
+    .btn.main-btn::after, .btn.main-btn::after, .head-links .focused-link::after{
+        display: none;
     }
 }
 
