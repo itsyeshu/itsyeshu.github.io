@@ -1,0 +1,12 @@
+User-agent: *
+
+Allow: /projects/
+
+Disallow: /projects/*
+
+Disallow: /public/
+Disallow: /projects/gallery/*
+
+Disallow: *.html
+
+Sitemap: /public/sitemap.xml

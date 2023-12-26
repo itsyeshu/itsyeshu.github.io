@@ -17,5 +17,5 @@ const move = (e) => {
     returnBackToNormal = setTimeout(resetHeroImage, 6000);
 }
 
-if(!isMobile)
-    window.addEventListener("mousemove", move);
+// if(!isMobile)
+//     window.addEventListener("mousemove", move);

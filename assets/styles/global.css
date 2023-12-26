@@ -11,7 +11,7 @@
     --footer-background: #34495e;
 
     --neon-color: #cbfc2a;
-    --loader-background: #666;
+    --loader-background: #d1eb7c;
     --white-color: #fefefe;
 }
 
@@ -129,6 +129,7 @@ img{
 #loader-content{
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     position: absolute;
     top:0;
     left: 0;
@@ -153,8 +154,9 @@ img{
     will-change: transform;
     
     transform: translate3d(0px, 0vw, 0px) skew(0deg, -45deg);
-    transform-style: preserve-3d;
+    /* transform-style: preserve-3d; */
     background: var(--loader-background);
+    will-change: transform;
 }
 
 #loader.loading .pane{
