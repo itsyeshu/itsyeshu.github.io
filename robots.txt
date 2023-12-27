@@ -1,9 +1,5 @@
 User-agent: *
 
-Allow: /projects/
-
-Disallow: /projects/*
-
 Disallow: /public/
 Disallow: /projects/gallery/*
 
