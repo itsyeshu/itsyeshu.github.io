@@ -39,6 +39,12 @@ code{
     font-weight: 400;
 }
 .background{
+    display: none;
+}
+
+
+
+/* .background{
     position: absolute;
     bottom: -5%;
     right: 15%;
@@ -56,24 +62,27 @@ code{
     background-size: contain;
     background-position: bottom left;
     background-repeat: no-repeat;
-}
+} */
 
 #hero-image{
-    width:30%;
+    width: 45%;
+    max-width: 30rem;
     height:auto;
     position: absolute;
-    bottom:5%;
+    bottom:0;
     right:0;
 
     transform-origin: 50% 50%;
     transform-style: preserve-3d;
     perspective: 800px;
     transition: transform 10s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 4;
 }
 #hero-image img{
+    display: block;
     width:100%;
     height:auto;
-    border-radius: 50%;
+    border-radius: 0 0 50rem 50rem;
     overflow: hidden;
     transform: translateZ(-1rem);
 }
@@ -81,8 +90,8 @@ code{
 #hero-image::after{
     content:"";
     display: block;
-    width: 50%;
-    height: 50%;
+    width: 200px;
+    height: 200px;
     position: absolute;
     bottom:0px;
     left:-10px;
@@ -98,17 +107,52 @@ code{
 #hero-aside{
     width: 60%;
     height: auto;
-    padding: 1rem 1.2rem 1rem 2rem;
-    margin-top: 2rem;
-    border-left: solid 3px #4e4e4e;
+    margin-top: 2.4rem;
     font-family: 'Open sans';
 }
 
 #hero-aside>*+*{
-    margin-top: 2rem;
+    margin-top: 1.2rem;
 }
+
+
+.text-bar{
+    position: absolute;
+    left:0; right:0;
+    width: auto;
+    height: auto;
+    text-wrap: nowrap;
+    font-family: "Media sans";
+    letter-spacing: 2px;
+    line-height: 1.6;
+    font-size: 70px;
+    opacity: 0.5;
+    color: #000;
+    margin-top:0!important;
+    transform: skewY(-5deg);
+    z-index: -1;
+}
+.text-bar::before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 10px;
+    margin-left: -200px;
+    animation: slide 10s infinite linear;
+}
+.text-bar span{
+    display: inline-block;
+    padding: 0 10px;
+}
+
+@keyframes slide{
+    100%{
+        margin-left: -946px;
+    }
+}
+
 .buttons{
-    margin: 2rem 0 0 0;
+    margin: 2.4rem 0 0 0!important;
 }
 
 .btn{
@@ -171,9 +215,12 @@ code{
 @media (max-width: 1024px) {
     
     #hero-image{
-        width:35%;
+        width:45%;
     }
 
+    .background{
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -183,22 +230,17 @@ code{
     .content-flex{
         padding: 0 0 3rem 0;
     }
-    .background{
-        width: 56%;
-        padding-top: 40%;
-        left: 0;
-    }
     #hero-image{
-        width: 75%;
+        width: 100%;
         position: relative;
-        bottom: -2.5rem;
-        right: -20%;
+        bottom: 0;
+        right: 0;
         transform-origin: center;
     }
     #hero-image::after{
-        width: 140px;
-        height: 140px;
-        left: -80px;
+        width: 100px;
+        height: 100px;
+        left: 0px;
     }
 
     #hero-aside{
